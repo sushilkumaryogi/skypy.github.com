@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Singleton Pattern - Programming Notes</title>
+  <meta name="author" content="Kinjal">
+
+  
+  <meta name="description" content="This post is about brief explanation of singleton pattern. it&#8217;s structure, usage and implementations in different languages - java, javascript &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://skypy.github.com/blog/2012/12/24/singleton-pattern/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Programming Notes" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Programming Notes</a></h1>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:skypy.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Singleton Pattern</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-24T23:14:00+05:30" pubdate data-updated="true">Dec 24<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>This post is about brief explanation of singleton pattern. it&#8217;s structure, usage and implementations in different languages - java, javascript and python.</p>
+
+<blockquote><p>In mathematics the term singleton defines a set exactly having one element.</p></blockquote>
+
+
+<p>So an example is <code>{a}</code> since it has one element.
+In design patterns, as per <a href="http://en.wikipedia.org/wiki/Gang_of_Four_(software)">GOF</a> the intent of singleton pattern is to ensure that a class has one instance and provide a global point of access to it.</p>
+
+<h6>Implementation -</h6>
+
+<ul>
+<li>The class is designed in such a way that only once instance can ever be created.</li>
+<li>Operation of creating the instance is hidden by declaring it private memebr of the class. Also make it static so the object is read only.</li>
+</ul>
+
+
+<p>Let&#8217;s look at a java basic non thread safe singleton implementation</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">class</span> <span class="nc">MySingleton</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">MySingleton</span> <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MySingleton</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="n">MySingleton</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">instance</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="nf">MySingleton</span><span class="o">()</span> <span class="o">{</span> <span class="o">}</span> <span class="c1">// prevents new MySingleton()</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getX</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="s">&quot;X&quot;</span><span class="o">;</span> <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getY</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="s">&quot;Y&quot;</span><span class="o">;</span> <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Notice that the constructor is private. It will throw error if a client direcrly wants to initialize the object. It makes sure that there will be only one instance of the class.</p>
+
+<h6>How to use this class?</h6>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">MySingleton</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getX</span><span class="o">();</span>
+</span><span class='line'><span class="n">MySingleton</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getY</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>Wrong approach to initialize it-</h6>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">MySingleton</span> <span class="n">mySingleton</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MySingleton</span><span class="o">();</span>
+</span><span class='line'><span class="n">mySingleton</span><span class="o">.</span><span class="na">getX</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>How singleton is different from a static class? <br /></h6>
+
+<p>Singleton, is a pattern whose instance is created only once and can be treated just like an normal instance. But static class allows only static methods. It is more of a procedural approach.</p>
+
+<h6>Usage</h6>
+
+<p>There are lot of bad reputation about singleton pattern. Singleton is like <em>creating a global variable and access it like you are creating a new instance of the class</em>. And it is always <em>good to avoid global</em>. However good example of using singleton is creating config class of an application or reading/writting a log file.</p>
+
+<!--more-->
+
+
+<h3>Singleton in javascript</h3>
+
+<p>When it comes to javascript, Singleton pattern seems to be more useful compared to other static language like java. The bad part of javascript is the use of <em>global</em>. By using Singleton pattern we can avoid using global, introduce namespace and write modularize code in javasciprt.</p>
+
+<p>Here is a very basic example</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Page</span> <span class="o">=</span> <span class="p">{};</span> <span class="c1">//namespace</span>
+</span><span class='line'><span class="nx">Page</span><span class="p">.</span><span class="nx">Singleton</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'> <span class="nx">attribute1</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+</span><span class='line'> <span class="nx">attribute2</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class='line'> <span class="nx">foo</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>so we can do, for example,  <code>Page.Singleton.attribute1</code> to retrieve values. Note that, we can also delete members from this class. This behavior is different from other object oriented languages like C++, java.</p>
+
+<p>The methods in the class are public(It is javascript!). However there is way to create private members.</p>
+
+<p>Let&#8217;s look at different implementation of singleton in javascript with closure -</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Page</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'><span class="nx">Page</span><span class="p">.</span><span class="nx">Singleton</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">privateAttr1</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span> <span class="c1">// not accessible outside which is good</span>
+</span><span class='line'>  <span class="nx">privateAttr2</span><span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">publicAttr</span><span class="o">:</span> <span class="nx">privateAttr1</span> <span class="c1">// public method</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'> <span class="p">}</span>
+</span><span class='line'><span class="p">)();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Here any member declared inside the annonymous fucntion is accessible only within that same closure. Public member can be placed inside within <code>return</code>.</p>
+
+<p>So we can do <code>Page.Singleton.publicAttr1</code>, but not <code>Page.Singleton.privateAttr1</code></p>
+
+<h3>Singleton in python</h3>
+
+<p>While trying to implement singleton pattern in python, I came accross a nice concept from <a href="http://code.activestate.com/recipes/66531/#c20">Alex Martelli&#8217;s post</a>. It is Borg pattern. It focuses on state rather than identity. There can be multiple instances but with shared state.</p>
+
+<p>Here is the <a href="http://code.activestate.com/recipes/66531/#c20">Borg pattern</a></p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Borg</span><span class="p">:</span>
+</span><span class='line'>  <span class="n">_shared_state</span> <span class="o">=</span> <span class="p">{}</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shared_state</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>How to use it?</h6>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Config</span><span class="p">(</span><span class="n">Borg</span><span class="p">):</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">Borg</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">client</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">client</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">return</span> <span class="s">&#39;Config =&gt; </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">client</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let&#8217;s see the result</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="s">&#39;XML&#39;</span><span class="p">)</span> <span class="c"># output: XML</span>
+</span><span class='line'><span class="n">b</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span> <span class="p">)</span> <span class="c"># output: XML</span>
+</span><span class='line'><span class="n">c</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="s">&#39;CSV&#39;</span><span class="p">)</span> <span class="c"># output: CSV</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So multiple instances of the class <code>Config</code> is allowed but they all share same state. That is why the value of <code>b</code> remains <code>XML</code></p>
+
+<p>References: <br />
+<a href="http://en.wikipedia.org/wiki/Gang_of_Four_(software)">GOF</a> <br />
+<a href="http://code.activestate.com/recipes/66531/#c20">Alex Martelli&#8217;s code snippet</a> <br />
+<a href="http://www.amazon.com/JavaScript-Design-Patterns-Recipes-Problem-Solution/dp/159059908X">Pro JavaScript Design Patterns</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Kinjal</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-24T23:14:00+05:30" pubdate data-updated="true">Dec 24<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/design/'>design</a>, <a class='category' href='/blog/categories/pattern/'>pattern</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://skypy.github.com/blog/2012/12/24/singleton-pattern/" data-via="" data-counturl="http://skypy.github.com/blog/2012/12/24/singleton-pattern/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/12/24/singleton-pattern/">Singleton Pattern</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Kinjal -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
