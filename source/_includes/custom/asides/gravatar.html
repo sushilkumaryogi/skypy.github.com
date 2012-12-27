@@ -1,0 +1,15 @@
+{% if site.gravatar_email %}
+<section>
+	<span>
+		<img src="{% gravatar_image %}" height="50" width="50"
+		alt="Gravatar of {{ site.author}} " title="Gravatar of
+		{{ site.author }}" />
+	</span>
+	<br />
+	<span>
+	  Hello I am Kinjal. <br />
+	  This blog is an effort to explain the
+	  concepts which I learn while working on different projects.
+	  </span>
+</section>
+{% endif %}
