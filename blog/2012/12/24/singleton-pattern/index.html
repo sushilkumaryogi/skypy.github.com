@@ -193,7 +193,7 @@ In design patterns, as per <a href="http://en.wikipedia.org/wiki/Gang_of_Four_(s
 
 <p>so we can do, for example,  <code>Page.Singleton.attribute1</code> to retrieve values. Note that, we can also delete members from this class. This behavior is different from other object oriented languages like C++, java.</p>
 
-<p>The methods in the class are public(It is javascript!). However there is way to create private members.</p>
+<p>The methods in the class are public(the default scope). However there is way to create private members.</p>
 
 <p>Let&#8217;s look at different implementation of singleton in javascript with closure -</p>
 
@@ -218,7 +218,7 @@ In design patterns, as per <a href="http://en.wikipedia.org/wiki/Gang_of_Four_(s
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Here any member declared inside the annonymous fucntion is accessible only within that same closure. Public member can be placed inside within <code>return</code>.</p>
+<p>Here any member declared inside the annonymous fucntion is accessible only within that same closure. Public member can be placed inside <code>return</code>.</p>
 
 <p>So we can do <code>Page.Singleton.publicAttr1</code>, but not <code>Page.Singleton.privateAttr1</code></p>
 
