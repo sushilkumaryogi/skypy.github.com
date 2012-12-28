@@ -16,7 +16,7 @@ In design patterns, as per [GOF](http://en.wikipedia.org/wiki/Gang_of_Four_(soft
 
 ###### Implementation -
 * The class is designed in such a way that only once instance can ever be created.
-* Operation of creating the instance is hidden by declaring it private memebr of the class. Also make it static so the object is read only.
+* Operation of creating the instance is hidden by declaring it private member of the class. Also make it static so the object is read only.
 
 Let's look at a java basic non thread safe singleton implementation
 {% codeblock lang:java %}
@@ -50,7 +50,7 @@ MySingleton mySingleton = new MySingleton();
 mySingleton.getX();
 {% endcodeblock %}
 
-###### How singleton is different from a static class? <br />
+###### How is singleton different from a static class? <br />
 Singleton, is a pattern whose instance is created only once and can be treated just like an normal instance. But static class allows only static methods. It is more of a procedural approach.
 
 ###### Usage
