@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: python | Programming Notes]]></title>
-  <link href="http://skypy.github.com/blog/categories/python/atom.xml" rel="self"/>
+  <title><![CDATA[Category: java, | Programming Notes]]></title>
+  <link href="http://skypy.github.com/blog/categories/java-/atom.xml" rel="self"/>
   <link href="http://skypy.github.com/"/>
-  <updated>2012-12-28T10:45:50+05:30</updated>
+  <updated>2012-12-28T11:21:04+05:30</updated>
   <id>http://skypy.github.com/</id>
   <author>
     <name><![CDATA[Kinjal]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Singleton Pattern]]></title>
     <link href="http://skypy.github.com/blog/2012/12/24/singleton-pattern/"/>
-    <updated>2012-12-24T00:00:00+05:30</updated>
+    <updated>2012-12-24T23:14:00+05:30</updated>
     <id>http://skypy.github.com/blog/2012/12/24/singleton-pattern</id>
     <content type="html"><![CDATA[<p>This post is about brief explanation of singleton pattern. it's structure, usage and implementations in different languages - java, javascript and python.</p>
 
