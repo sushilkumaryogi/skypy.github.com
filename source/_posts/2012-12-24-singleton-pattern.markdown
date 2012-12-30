@@ -3,7 +3,8 @@ layout: post
 title: "Singleton Pattern"
 date: 2012-12-24 23:14
 comments: true
-categories: designpattern, javascript, java, python, borg
+keywords: "singleton, design pattern, javascript, python,"
+categories: [designpattern, javascript, java, python]
 published: true
 ---
 This post is about brief explanation of singleton pattern. it's structure, usage and implementations in different languages - java, javascript and python.
