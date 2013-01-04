@@ -4,7 +4,7 @@
   <title><![CDATA[Category: java | Programming Notes]]></title>
   <link href="http://skypy.github.com/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://skypy.github.com/"/>
-  <updated>2012-12-30T19:47:51+05:30</updated>
+  <updated>2013-01-04T20:38:55+05:30</updated>
   <id>http://skypy.github.com/</id>
   <author>
     <name><![CDATA[Kinjal]]></name>
@@ -219,9 +219,9 @@ In design patterns, as per <a href="http://en.wikipedia.org/wiki/Gang_of_Four_(s
 <p>So multiple instances of the class <code>Config</code> is allowed but they all share same state. That is why the value of <code>b</code> remains <code>XML</code></p>
 
 <p>References: <br />
-<a href="http://en.wikipedia.org/wiki/Gang_of_Four_(software)">GOF</a> <br />
-<a href="http://code.activestate.com/recipes/66531/#c20">Alex Martelli's code snippet</a> <br />
-<a href="http://www.amazon.com/JavaScript-Design-Patterns-Recipes-Problem-Solution/dp/159059908X">Pro JavaScript Design Patterns</a></p>
+1. <a href="http://en.wikipedia.org/wiki/Gang_of_Four_(software)">GOF</a> <br />
+2. <a href="http://code.activestate.com/recipes/66531/#c20">Alex Martelli's code snippet</a> <br />
+3. <a href="http://www.amazon.com/JavaScript-Design-Patterns-Recipes-Problem-Solution/dp/159059908X">Pro JavaScript Design Patterns</a></p>
 ]]></content>
   </entry>
   

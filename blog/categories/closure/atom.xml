@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: closure | Programming Notes]]></title>
+  <link href="http://skypy.github.com/blog/categories/closure/atom.xml" rel="self"/>
+  <link href="http://skypy.github.com/"/>
+  <updated>2013-01-04T20:38:55+05:30</updated>
+  <id>http://skypy.github.com/</id>
+  <author>
+    <name><![CDATA[Kinjal]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Power of Closure]]></title>
+    <link href="http://skypy.github.com/blog/2013/01/03/closure/"/>
+    <updated>2013-01-03T18:31:00+05:30</updated>
+    <id>http://skypy.github.com/blog/2013/01/03/closure</id>
+    <content type="html"><![CDATA[<p>To begin with closure, let's take a quick look at scope.</p>
+
+<p>What is Scope ? It deifnes the environemnt or area where variables or functions are available. Suppose we have a method <code>foo()</code>
+and we create a variable <code>x</code> inside <code>foo()</code> . <br />
+So it is clear that the variable <code>x</code> is only available inside <code>foo()</code> (unless explicitly defined as global).
+Now let's think, there is another function that wants to use this local variable <code>x</code> or the other way let me say the other function wants to use the state of function <code>foo()</code>.</p>
+
+<p>How to do this ?</p>
+
+<p>Look at this image.<br />
+<a href="http://s1290.beta.photobucket.com/user/skypya/media/Blog/closure_zps340b5344.jpg.html" target="_blank"><img src="http://i1290.photobucket.com/albums/b521/skypya/Blog/closure_zps340b5344.jpg" border="0" alt="Photobucket"/></a></p>
+
+<p>Let me explain the image with a small example in lisp.
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(defun foo(x)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>   (defun bar(n) (+ n x)))
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>In the code <code>foo()</code> points to the outer region in the image and <code>bar()</code> is the inner region. Notice <code>x</code> is actually in the scope of <code>foo()</code>. However the inner method <code>bar()</code> has access to the variable <code>x</code>. This is closure. <em>The inner region is associated with an
+environment that is the outer region</em>.<br />
+The vairable <code>x</code> is a free varible and accessible to <code>foo()</code> and <code>bar()</code>. Interesting fact is that there will be no problem to acccess the free variable <code>x</code> inside the method <code>bar()</code> even though the outher method <code>foo()</code> is returned.</p>
+
+<p>Converting the above code to use an annonymous function.
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(defun foo(x)&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>   #' (lambda (x) (+ x 10)))
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Both of the above codes are creating closure - one with named function and the other with
+annonymous function. Note that we frequently use annonymous function but that doesn't mean it is creating a closure. The function must require an environment to form a closure
+same as the way a named function do.</p>
+
+<p>There are different languages which support closure, for example, Lisp, Javascirpt, pyhton. And there are languages which do not support Closure, examples are C, C++, Java.</p>
+
+<p>Let me write a small code in pyhton that has closure.
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>def outer(num1, num2):
+</span><span class='line'>  def inner(num):&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>return num + num1 + num2
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p>  return inner</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>If we call the above function <code>outer(2, 3)(10)</code>, it will output <code>15</code>.</p>
+
+<p>Now, Let's output the same result using a <em>callback</em> function.
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>def foo(num1, num2, callback):&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>n = num1 + num2
+</span><span class='line'>return callback(n)
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>
+</span><span class='line'>&lt;p></span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Calling the function <code>foo()</code> with the arguments <code>num1</code>, <code>num2</code> and a callback function
+using <em>lambda</em>.
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>foo(2, 3, lambda x : x + 10)</span></code></pre></td></tr></table></div></figure></notextile></div>
+The outout is <code>15</code>.</p>
+
+<p>So here is the question. How is closure different from a callback function?
+If we generalize the question, it would be - <em>how is closure different from the
+similar techniques available in other languages which do not support closure, for
+example, function pointer in C, annonymous inner class in java</em>?</p>
+
+<p>The main difference is, in the above example the method <code>inner</code> knows that it came from the method <code>outer</code>, that is, <code>inner</code> has idea of it's environment. But callback is not. It is just a <em>block of executable code which can be passed as an argument to other function</em>.</p>
+
+<p>See also <br />
+1. <a href="http://martinfowler.com/bliki/Closure.html">Closure</a> <br />
+2. <a href="http://www.javaworld.com/javaworld/jw-06-2008/jw-06-closures.html">Closure and inner class</a></p>
+]]></content>
+  </entry>
+  
+</feed>
