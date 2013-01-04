@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | Programming Notes]]></title>
   <link href="http://skypy.github.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://skypy.github.com/"/>
-  <updated>2013-01-04T20:38:55+05:30</updated>
+  <updated>2013-01-04T21:22:56+05:30</updated>
   <id>http://skypy.github.com/</id>
   <author>
     <name><![CDATA[Kinjal]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Singleton Pattern]]></title>
-    <link href="http://skypy.github.com/blog/2012/12/24/singleton-pattern/"/>
+    <link href="http://skypy.github.com/blog/singleton-pattern/"/>
     <updated>2012-12-24T23:14:00+05:30</updated>
-    <id>http://skypy.github.com/blog/2012/12/24/singleton-pattern</id>
+    <id>http://skypy.github.com/blog/singleton-pattern</id>
     <content type="html"><![CDATA[<p>This post is about brief explanation of singleton pattern. it's structure, usage and implementations in different languages - java, javascript and python.</p>
 
 <p><blockquote><p>In mathematics the term singleton defines a set exactly having one element.</p></blockquote>
