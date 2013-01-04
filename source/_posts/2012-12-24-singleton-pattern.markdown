@@ -127,6 +127,6 @@ So multiple instances of the class `Config` is allowed but they all share same s
 
 
 References: <br />
-[GOF](http://en.wikipedia.org/wiki/Gang_of_Four_(software\)) <br />
-[Alex Martelli's code snippet](http://code.activestate.com/recipes/66531/#c20) <br />
-[Pro JavaScript Design Patterns](http://www.amazon.com/JavaScript-Design-Patterns-Recipes-Problem-Solution/dp/159059908X)
+1. [GOF](http://en.wikipedia.org/wiki/Gang_of_Four_(software\)) <br />
+2. [Alex Martelli's code snippet](http://code.activestate.com/recipes/66531/#c20) <br />
+3. [Pro JavaScript Design Patterns](http://www.amazon.com/JavaScript-Design-Patterns-Recipes-Problem-Solution/dp/159059908X)
