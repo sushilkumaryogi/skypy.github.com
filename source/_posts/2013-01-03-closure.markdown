@@ -3,6 +3,7 @@ layout: post
 title: "Power of Closure"
 date: 2013-01-03 18:31
 comments: true
+keywords: "closure, lisp, callback"
 categories: closure
 ---
 To begin with closure, let's take a quick look at scope.

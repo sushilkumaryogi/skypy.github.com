@@ -3,7 +3,7 @@ layout: post
 title: "Singleton Pattern"
 date: 2012-12-24 23:14
 comments: true
-keywords: "singleton, design pattern, javascript, python,"
+keywords: "singleton, design pattern, javascript, python"
 categories: [designpattern, javascript, java, python]
 published: true
 ---
