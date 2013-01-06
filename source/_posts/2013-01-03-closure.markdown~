@@ -35,7 +35,7 @@ Converting the above code to use an annonymous function.
 
 Both of the above codes are creating closure - one with named function and the other with
 annonymous function. Note that we frequently use annonymous function but that doesn't mean it is creating a closure. The function must require an environment to form a closure
-same as the way a named function does.
+same as the way a named function do.
 
 There are different languages which support closure, for example, Lisp, Javascirpt, pyhton. And there are languages which do not support Closure, examples are C, C++, Java.
 
