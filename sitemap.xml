@@ -2,18 +2,18 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://skypy.github.com/blog/singleton-pattern/</loc>
-        <lastmod>2013-01-04T20:34:48+05:30</lastmod>
+        <lastmod>2013-01-06T12:45:06+05:30</lastmod>
     </url>
     <url>
         <loc>http://skypy.github.com/blog/closure/</loc>
-        <lastmod>2013-01-04T20:38:27+05:30</lastmod>
+        <lastmod>2013-01-06T12:45:03+05:30</lastmod>
     </url>
     <url>
         <loc>http://skypy.github.com/blog/archives/</loc>
-        <lastmod>2013-01-04T20:38:27+05:30</lastmod>
+        <lastmod>2013-01-06T12:45:06+05:30</lastmod>
     </url>
     <url>
         <loc>http://skypy.github.com/</loc>
-        <lastmod>2013-01-04T20:38:27+05:30</lastmod>
+        <lastmod>2013-01-06T12:45:06+05:30</lastmod>
     </url>
 </urlset>

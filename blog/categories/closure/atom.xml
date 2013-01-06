@@ -4,7 +4,7 @@
   <title><![CDATA[Category: closure | Programming Notes]]></title>
   <link href="http://skypy.github.com/blog/categories/closure/atom.xml" rel="self"/>
   <link href="http://skypy.github.com/"/>
-  <updated>2013-01-04T21:28:36+05:30</updated>
+  <updated>2013-01-06T12:52:17+05:30</updated>
   <id>http://skypy.github.com/</id>
   <author>
     <name><![CDATA[Kinjal]]></name>
@@ -64,7 +64,7 @@ The vairable <code>x</code> is a free varible and accessible to <code>foo()</cod
 
 <p>Both of the above codes are creating closure - one with named function and the other with
 annonymous function. Note that we frequently use annonymous function but that doesn't mean it is creating a closure. The function must require an environment to form a closure
-same as the way a named function do.</p>
+same as the way a named function does.</p>
 
 <p>There are different languages which support closure, for example, Lisp, Javascirpt, pyhton. And there are languages which do not support Closure, examples are C, C++, Java.</p>
 
