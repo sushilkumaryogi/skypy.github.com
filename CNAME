@@ -1,1 +1,1 @@
-kinjalc.com
+echo 'kinjalc.com' >> source/CNAME
