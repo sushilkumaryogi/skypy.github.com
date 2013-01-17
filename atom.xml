@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Programming Notes]]></title>
+  <title><![CDATA[Kinjal Chakraborty]]></title>
   <link href="http://skypy.github.com/atom.xml" rel="self"/>
   <link href="http://skypy.github.com/"/>
-  <updated>2013-01-16T19:28:40+05:30</updated>
+  <updated>2013-01-17T14:01:05+05:30</updated>
   <id>http://skypy.github.com/</id>
   <author>
     <name><![CDATA[Kinjal Chakraborty]]></name>
