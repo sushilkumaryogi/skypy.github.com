@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: closure | Kinjal Chakraborty]]></title>
-  <link href="http://skypy.github.com/blog/categories/closure/atom.xml" rel="self"/>
-  <link href="http://skypy.github.com/"/>
-  <updated>2013-01-17T18:03:29+05:30</updated>
-  <id>http://skypy.github.com/</id>
+  <link href="http://www.kinjalc.com/blog/categories/closure/atom.xml" rel="self"/>
+  <link href="http://www.kinjalc.com/"/>
+  <updated>2013-01-17T20:09:21+05:30</updated>
+  <id>http://www.kinjalc.com/</id>
   <author>
     <name><![CDATA[Kinjal Chakraborty]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Power of Closure]]></title>
-    <link href="http://skypy.github.com/blog/closure/"/>
+    <link href="http://www.kinjalc.com/blog/closure/"/>
     <updated>2013-01-03T18:31:00+05:30</updated>
-    <id>http://skypy.github.com/blog/closure</id>
+    <id>http://www.kinjalc.com/blog/closure</id>
     <content type="html"><![CDATA[<p>To begin with closure, let's take a quick look at scope.</p>
 
 <p>What is Scope ? It deifnes the environemnt or area where variables or functions are available. Suppose we have a method <code>foo()</code>

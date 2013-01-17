@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: javascript | Kinjal Chakraborty]]></title>
-  <link href="http://skypy.github.com/blog/categories/javascript/atom.xml" rel="self"/>
-  <link href="http://skypy.github.com/"/>
-  <updated>2013-01-17T18:03:29+05:30</updated>
-  <id>http://skypy.github.com/</id>
+  <link href="http://www.kinjalc.com/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://www.kinjalc.com/"/>
+  <updated>2013-01-17T20:09:21+05:30</updated>
+  <id>http://www.kinjalc.com/</id>
   <author>
     <name><![CDATA[Kinjal Chakraborty]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Singleton Pattern]]></title>
-    <link href="http://skypy.github.com/blog/singleton-pattern/"/>
+    <link href="http://www.kinjalc.com/blog/singleton-pattern/"/>
     <updated>2012-12-24T23:14:00+05:30</updated>
-    <id>http://skypy.github.com/blog/singleton-pattern</id>
+    <id>http://www.kinjalc.com/blog/singleton-pattern</id>
     <content type="html"><![CDATA[<p>This post is about brief explanation of singleton pattern. it's structure, usage and implementations in different languages - java, javascript and python.</p>
 
 <p><blockquote><p>In mathematics the term singleton defines a set exactly having one element.</p></blockquote>
