@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Kinjal Chakraborty</title>
+  <title>javascript inheritance - Kinjal Chakraborty</title>
   <meta name="author" content="Kinjal Chakraborty">
 
   
   <meta name="description" content="I was working on a project and came across a situation where three different classes share some common functionalities. On the first attempt, all the &hellip;">
-  
+  <meta name="keywords" content="javascript, inheritance, mixin, designpattern">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.kinjalc.com/">
+  <link rel="canonical" href="http://www.kinjalc.com/blog/javascript-inheritance/">
   <link href="/favicon.ico" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -73,22 +73,19 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/javascript-inheritance/">Javascript Inheritance</a></h1>
+      <h1 class="entry-title">Javascript Inheritance</h1>
     
     
     
   </header>
 
 
-  <div class="entry-content"><p>I was working on a project and came across a situation where three different classes share some common functionalities.</p>
+<div class="entry-content"><p>I was working on a project and came across a situation where three different classes share some common functionalities.</p>
 
 <p>On the first attempt, all the classes I created contained common functions. And it was code duplicate acrosss all the functions. I thought of grouping common functionalities in a separate function and use this common function
 everywhere I needed.</p>
@@ -321,221 +318,71 @@ inheritance.</p>
 
 <p>Mixin can be used when we want to share some common properties among dissimilar classes.</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/closure/">Power of Closure</a></h1>
-    
-    
-    
-  </header>
-
-
-  <div class="entry-content"><p>To begin with closure, let&#8217;s take a quick look at scope.</p>
-
-<p>What is Scope ? It deifnes the environemnt or area where variables or functions are available. Suppose we have a method <code>foo()</code>
-and we create a variable <code>x</code> inside <code>foo()</code> . <br />
-So it is clear that the variable <code>x</code> is only available inside <code>foo()</code> (unless explicitly defined as global).
-Now let&#8217;s think, there is another function that wants to use this local variable <code>x</code> or the other way let me say the other function wants to use the state of function <code>foo()</code>.</p>
-
-<p>How to do this ?</p>
-
-<p>Look at this image.<br />
-<a href="http://s1290.beta.photobucket.com/user/skypya/media/Blog/closure_zps340b5344.jpg.html" target="_blank"><img src="http://i1290.photobucket.com/albums/b521/skypya/Blog/closure_zps340b5344.jpg" border="0" alt="Photobucket"/></a></p>
-
-<p>Let me explain the image with a small example in lisp.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>(defun foo(x)
-</span><span class='line'>       (defun bar(n) (+ n x)))</span></code></pre></td></tr></table></div></figure>
-
-
-<p>In the code <code>foo()</code> points to the outer region in the image and <code>bar()</code> is the inner region. Notice <code>x</code> is actually in the scope of <code>foo()</code>. However the inner method <code>bar()</code> has access to the variable <code>x</code>. This is closure. <em>The inner region is associated with an
-environment that is the outer region</em>.<br />
-The vairable <code>x</code> is a free varible and accessible to <code>foo()</code> and <code>bar()</code>. Interesting fact is that there will be no problem to acccess the free variable <code>x</code> inside the method <code>bar()</code> even though the outher method <code>foo()</code> is returned.</p>
-
-<p>Converting the above code to use an annonymous function.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>(defun foo(x)
-</span><span class='line'>       #' (lambda (x) (+ x 10)))</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Both of the above codes are creating closure - one with named function and the other with
-annonymous function. Note that we frequently use annonymous function but that doesn&#8217;t mean it is creating a closure. The function must require an environment to form a closure
-same as the way a named function does.</p>
-
-<p>There are different languages which support closure, for example, Lisp, Javascirpt, pyhton. And there are languages which do not support Closure, examples are C, C++, Java.</p>
-
-<p>Let me write a small code in pyhton that has closure.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def outer(num1, num2):
-</span><span class='line'>  def inner(num):
-</span><span class='line'>    return num + num1 + num2
-</span><span class='line'>  return inner</span></code></pre></td></tr></table></div></figure>
-
-
-<p>If we call the above function <code>outer(2, 3)(10)</code>, it will output <code>15</code>.</p>
-
-<p>Now, Let&#8217;s output the same result using a <em>callback</em> function.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def foo(num1, num2, callback):
-</span><span class='line'>    n = num1 + num2
-</span><span class='line'>    return callback(n)</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Calling the function <code>foo()</code> with the arguments <code>num1</code>, <code>num2</code> and a callback function
-using <em>lambda</em>.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>foo(2, 3, lambda x : x + 10)</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The outout is <code>15</code>.</p>
-
-<p>So here is the question. How is closure different from a callback function?
-If we generalize the question, it would be - <em>how is closure different from the
-similar techniques available in other languages which do not support closure, for
-example, function pointer in C, annonymous inner class in java</em>?</p>
-
-<p>The main difference is, in the above example the method <code>inner</code> knows that it came from the method <code>outer</code>, that is, <code>inner</code> has idea of it&#8217;s environment. But callback is not. It is just a <em>block of executable code which can be passed as an argument to other function</em>.</p>
-
-<p>See also <br />
-1. <a href="http://martinfowler.com/bliki/Closure.html">Closure</a> <br />
-2. <a href="http://www.javaworld.com/javaworld/jw-06-2008/jw-06-closures.html">Closure and inner class</a></p>
-</div>
-  
   
 
+<span class="byline author vcard">Posted by <span class="fn">Kinjal Chakraborty</span></span>
 
-    </article>
-  
-  
-    <article>
       
-  <header>
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-10T10:53:00+05:30" pubdate data-updated="true">Feb 10<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/designpattern/'>designpattern</a>, <a class='category' href='/blog/categories/javascript/'>javascript</a>
+  
+</span>
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/singleton-pattern/">Singleton Pattern</a></h1>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.kinjalc.com/blog/javascript-inheritance/" data-via="" data-counturl="http://www.kinjalc.com/blog/javascript-inheritance/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
     
-    
-    
-  </header>
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/closure/" title="Previous Post: Power of Closure">&laquo; Power of Closure</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-
-  <div class="entry-content"><p>This post is about brief explanation of singleton pattern. it&#8217;s structure, usage and implementations in different languages - java, javascript and python.</p>
-
-<blockquote><p>In mathematics the term singleton defines a set exactly having one element.</p></blockquote>
-
-
-<p>So an example is <code>{a}</code> since it has one element.
-In design patterns, as per <a href="http://en.wikipedia.org/wiki/Gang_of_Four_(software)">GOF</a> the intent of singleton pattern is to ensure that a class has one instance and provide a global point of access to it.</p>
-
-<h6>Implementation -</h6>
-
-<ul>
-<li>The class is designed in such a way that only once instance can ever be created.</li>
-<li>Operation of creating the instance is hidden by declaring it private member of the class. Also make it static so the object is read only.</li>
-</ul>
-
-
-<p>Let&#8217;s look at a java basic non thread safe singleton implementation</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">class</span> <span class="nc">MySingleton</span> <span class="o">{</span>
-</span><span class='line'>  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">MySingleton</span> <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MySingleton</span><span class="o">();</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="n">MySingleton</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">instance</span><span class="o">;</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">private</span> <span class="nf">MySingleton</span><span class="o">()</span> <span class="o">{</span> <span class="o">}</span> <span class="c1">// prevents new MySingleton()</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getX</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="s">&quot;X&quot;</span><span class="o">;</span> <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getY</span><span class="o">()</span> <span class="o">{</span> <span class="k">return</span> <span class="s">&quot;Y&quot;</span><span class="o">;</span> <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Notice that the constructor is private. It will throw error if a client direcrly wants to initialize the object. It makes sure that there will be only one instance of the class.</p>
-
-<h6>How to use this class?</h6>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">MySingleton</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getX</span><span class="o">();</span>
-</span><span class='line'><span class="n">MySingleton</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getY</span><span class="o">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h6>Wrong approach to initialize it-</h6>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">MySingleton</span> <span class="n">mySingleton</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MySingleton</span><span class="o">();</span>
-</span><span class='line'><span class="n">mySingleton</span><span class="o">.</span><span class="na">getX</span><span class="o">();</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h6>How is singleton different from a static class? <br /></h6>
-
-<p>Singleton, is a pattern whose instance is created only once and can be treated just like an normal instance. But static class allows only static methods. It is more of a procedural approach.</p>
-
-<h6>Usage</h6>
-
-<p>There are lot of bad reputation about singleton pattern. Singleton is like <em>creating a global variable and access it like you are creating a new instance of the class</em>. And it is always <em>good to avoid global</em>. However good example of using singleton is creating config class of an application or reading/writting a log file.</p>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/singleton-pattern/">Read on &rarr;</a>
-    </footer>
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
 </aside>
+
 
     </div>
   </div>
@@ -551,7 +398,10 @@ In design patterns, as per <a href="http://en.wikipedia.org/wiki/Gang_of_Four_(s
       var disqus_shortname = 'notes11';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.kinjalc.com/blog/javascript-inheritance/';
+        var disqus_url = 'http://www.kinjalc.com/blog/javascript-inheritance/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

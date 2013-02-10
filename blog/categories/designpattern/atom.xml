@@ -4,7 +4,7 @@
   <title><![CDATA[Category: designpattern | Kinjal Chakraborty]]></title>
   <link href="http://www.kinjalc.com/blog/categories/designpattern/atom.xml" rel="self"/>
   <link href="http://www.kinjalc.com/"/>
-  <updated>2013-01-17T20:09:21+05:30</updated>
+  <updated>2013-02-10T20:38:43+05:30</updated>
   <id>http://www.kinjalc.com/</id>
   <author>
     <name><![CDATA[Kinjal Chakraborty]]></name>
@@ -12,6 +12,237 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[javascript inheritance]]></title>
+    <link href="http://www.kinjalc.com/blog/javascript-inheritance/"/>
+    <updated>2013-02-10T10:53:00+05:30</updated>
+    <id>http://www.kinjalc.com/blog/javascript-inheritance</id>
+    <content type="html"><![CDATA[<p>I was working on a project and came across a situation where three different classes share some common functionalities.</p>
+
+<p>On the first attempt, all the classes I created contained common functions. And it was code duplicate acrosss all the functions. I thought of grouping common functionalities in a separate function and use this common function
+everywhere I needed.</p>
+
+<p>But that was not the exact structure I wanted to implement. It would have been better if some of the common fucntionlities were
+overridden. Later I tried to understand how inhertiance works in javascript.</p>
+
+<p><a href="http://www.amazon.com/JavaScript-Design-Patterns-Recipes-Problem-Solution/dp/159059908X">Pro JavaScript Design Patterns</a> has a nice
+explanation of achieving inheritance in javascript. I thought of sharing this concept with a simple example.</p>
+
+<p>The implementation of inheritance in javascript is completely different that how it is done in other object oriented languages.</p>
+
+<p>Let's define the case. There are two classes - A and B. A is parent class and B is child. In OO language languae it is like -</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">class</span> <span class="nc">A</span> <span class="o">{&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kd">class</span> <span class="nc">B</span> <span class="kd">extends</span> <span class="n">A</span> <span class="o">{&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Now, create this classes in javascript.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">A</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="kd">function</span> <span class="nx">B</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Javascript doesn't have a "class" concept like other OO language. It works on prototype model. Let's add some code to the above js classes.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">A</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'> <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">A</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="kd">function</span> <span class="nx">B</span><span class="p">(</span><span class="nx">color</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'> <span class="k">this</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="nx">color</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">B</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getColor</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">color</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The question how does B inherits properties from A ?
+There is no <code>extend</code> in javascript.</p>
+
+<p>Object relationship is acieved by prototype chain.</p>
+
+<p>What is it ? Every object in javascript has an attribute <code>prototype</code>. When a memeber of an object is accessed, javascript looks for the memeber in prototype if it doesn't find in
+current object. This searching continues through each object's prototype untill the memeber is found or null.</p>
+
+<p>Now make a relation between A and B. To do this add an empty object <code>new A()</code> to B``'s prototype. And reset the constructor attribute of B.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">B</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">A</span><span class="p">();</span>
+</span><span class='line'><span class="nx">B</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">constructor</span> <span class="o">=</span> <span class="nx">B</span><span class="p">;</span>
+</span><span class='line'><span class="nx">B</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getColor</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'> <span class="k">this</span><span class="p">.</span><span class="nx">color</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>One more thing remaining that is add a call to <code>A</code>'s constructor in <code>B</code>.</p>
+
+<p>Modifying the child class <code>B</code></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">B</span><span class="p">(</span><span class="nx">color</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'> <span class="nx">A</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+</span><span class='line'> <span class="k">this</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="nx">color</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>So the relation of parent-child is done. Now let's examine the output.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">b</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">B</span><span class="p">(</span><span class="s2">&quot;I am b&quot;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nx">b</span><span class="p">.</span><span class="nx">getName</span><span class="p">();</span> <span class="c1">// output: &quot;I am b&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><code>b.getName()</code> will first search at <code>B</code>'s prototype. It will continue on searching since
+getName() doesn't exist here. <code>B</code> holds a prototype relationship with <code>A</code>.
+And <code>getName()</code> exists there. So it outputs result.</p>
+
+<p>This is somewhat similar to the concept of <em>classical inheritance</em>. There is one more way of doing it.</p>
+
+<p>Instead of deifning the structure thgrough a class, we can just deifne a object and this object is used by others.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">A</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'> <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;I am A&quot;</span><span class="p">,</span>
+</span><span class='line'> <span class="nx">getName</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+</span><span class='line'> <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Now this <code>A</code> object can be cloned and used in other objects. <a href="http://www.amazon.com/JavaScript-Design-Patterns-Recipes-Problem-Solution/dp/159059908X">It</a> has a helper function to clone a object efficiently.</p>
+
+<p>The clone function is -</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">clone</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'> <span class="nx">fucntion</span> <span class="nx">F</span><span class="p">()</span> <span class="p">{}</span>
+</span><span class='line'> <span class="nx">F</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">object</span><span class="p">;</span>
+</span><span class='line'> <span class="k">return</span> <span class="k">new</span> <span class="nx">F</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>It creates a empty function and the prototype object is added to empty function's prototype attribute. And it return a new object of
+the empty function (it only has the prototype object).</p>
+
+<p>Now use this <code>clone</code> function to clone the object <code>A</code>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">B</span> <span class="o">=</span> <span class="nx">clone</span><span class="p">(</span><span class="nx">A</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>So <code>b.getName()</code> will link to <code>A</code>'s <code>getName()</code>.</p>
+
+<p>This is called <em>prototypal inheritance</em>. It is clean, memory efficient. But actually it's underlying concept is complex than classical
+inheritance.</p>
+
+<p>There is another concept in javascript to share common functionalities. It is <a href="http://en.wikipedia.org/wiki/Mixin">Mixin</a>.</p>
+
+<p>Let's define the Mixin class.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">Mixin</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>
+</span><span class='line'><span class="nx">Mixin</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'> <span class="nx">getSomeObject</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="s2">&quot;something&quot;</span><span class="p">;</span>
+</span><span class='line'> <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Now the idea is to reuse this <code>getSomeObject()</code> function  in other objects. The helper function described <a href="http://www.amazon.com/JavaScript-Design-Patterns-Recipes-Problem-Solution/dp/159059908X">here</a> does the job making this relation.</p>
+
+<p>This is the function -
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">augment</span><span class="p">(</span><span class="nx">receivingClass</span><span class="p">,</span> <span class="nx">givingClass</span><span class="p">)</span> <span class="p">{</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">pre</span><span class="o">&gt;&lt;</span><span class="nx">code</span><span class="o">&gt;</span><span class="k">for</span><span class="p">(</span><span class="nx">methodName</span> <span class="k">in</span> <span class="nx">givingClass</span><span class="p">.</span><span class="nx">prototype</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>     <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">receivingClass</span><span class="p">.</span><span class="nx">prototype</span><span class="p">[</span><span class="nx">methodName</span><span class="p">])</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">receivingClass</span><span class="p">.</span><span class="nx">prototype</span><span class="p">[</span><span class="nx">methodName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">givingClass</span><span class="p">.</span><span class="nx">prototype</span><span class="p">[</span><span class="nx">methodName</span><span class="p">];</span>
+</span><span class='line'>     <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">&lt;</span><span class="err">/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Let's use this function so that <code>B</code> can use it -
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">augment</span><span class="p">(</span><span class="nx">B</span><span class="p">,</span> <span class="nx">Mixin</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>Mixin can be used when we want to share some common properties among dissimilar classes.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Singleton Pattern]]></title>
