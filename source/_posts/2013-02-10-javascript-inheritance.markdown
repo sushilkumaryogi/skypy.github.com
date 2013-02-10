@@ -173,3 +173,6 @@ augment(B, Mixin)
 {% endcodeblock %}
 
 Mixin can be used when we want to share some common properties among dissimilar classes.
+
+See also <br />
+[Pro JavaScript Design Patterns](http://www.amazon.com/JavaScript-Design-Patterns-Recipes-Problem-Solution/dp/159059908X)
