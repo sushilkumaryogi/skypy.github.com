@@ -4,7 +4,7 @@
   <title><![CDATA[Category: designpattern | Kinjal Chakraborty]]></title>
   <link href="http://www.kinjalc.com/blog/categories/designpattern/atom.xml" rel="self"/>
   <link href="http://www.kinjalc.com/"/>
-  <updated>2013-02-10T20:38:43+05:30</updated>
+  <updated>2013-02-10T20:44:22+05:30</updated>
   <id>http://www.kinjalc.com/</id>
   <author>
     <name><![CDATA[Kinjal Chakraborty]]></name>
@@ -241,6 +241,9 @@ inheritance.</p>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Mixin can be used when we want to share some common properties among dissimilar classes.</p>
+
+<p>See also <br />
+<a href="http://www.amazon.com/JavaScript-Design-Patterns-Recipes-Problem-Solution/dp/159059908X">Pro JavaScript Design Patterns</a></p>
 ]]></content>
   </entry>
   
