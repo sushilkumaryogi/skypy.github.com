@@ -19,7 +19,7 @@ overridden. Later I tried to understand how inhertiance works in javascript.
 [Pro JavaScript Design Patterns](http://www.amazon.com/JavaScript-Design-Patterns-Recipes-Problem-Solution/dp/159059908X) has a nice
 explanation of achieving inheritance in javascript. I thought of sharing this concept with a simple example.
 
-The implementation of inheritance in javascript is completely different that how it is done in other object oriented languages.
+The implementation of inheritance in javascript is completely different than how it is done in other object oriented languages.
 
 Let's define the case. There are two classes - A and B. A is parent class and B is child. In OO language languae it is like -
 
