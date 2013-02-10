@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | Kinjal Chakraborty]]></title>
   <link href="http://www.kinjalc.com/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://www.kinjalc.com/"/>
-  <updated>2013-02-10T20:44:22+05:30</updated>
+  <updated>2013-02-10T20:47:37+05:30</updated>
   <id>http://www.kinjalc.com/</id>
   <author>
     <name><![CDATA[Kinjal Chakraborty]]></name>
@@ -29,7 +29,7 @@ overridden. Later I tried to understand how inhertiance works in javascript.</p>
 <p><a href="http://www.amazon.com/JavaScript-Design-Patterns-Recipes-Problem-Solution/dp/159059908X">Pro JavaScript Design Patterns</a> has a nice
 explanation of achieving inheritance in javascript. I thought of sharing this concept with a simple example.</p>
 
-<p>The implementation of inheritance in javascript is completely different that how it is done in other object oriented languages.</p>
+<p>The implementation of inheritance in javascript is completely different than how it is done in other object oriented languages.</p>
 
 <p>Let's define the case. There are two classes - A and B. A is parent class and B is child. In OO language languae it is like -</p>
 
